@@ -3,6 +3,14 @@ dnl Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson
 dnl Copyright (c) 2007-2013, The Tor Project, Inc.
 dnl See LICENSE for licensing information
 
+# gl_AS_VAR_IF(VAR, VALUE, [IF-MATCH], [IF-NOT-MATCH])
+# ----------------------------------------------------
+# Backport of autoconf-2.63b's macro.
+# taken from: https://lists.gnu.org/archive/html/bug-gnulib/2010-01/msg00168.html
+m4_ifndef([AS_VAR_IF],
+[m4_define([AS_VAR_IF],
+[AS_IF([test x"AS_VAR_GET([$1])" = x""$2], [$3], [$4])])])
+
 AC_INIT([tor],[0.2.5.2-alpha])
 AC_CONFIG_SRCDIR([src/or/main.c])
 AC_CONFIG_MACRO_DIR([m4])
