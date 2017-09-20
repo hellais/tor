@@ -146,6 +146,16 @@ dnl       Used to support renaming --with-ssl-dir to --with-openssl-dir
 dnl
 AC_DEFUN([TOR_SEARCH_LIBRARY], [
 try$1dir=""
+
+# When on macOS homebrew, prefer the path of the homebrew package, unless
+# command line options are specified.
+if test -d /usr/local/Cellar/$1; then
+    # The check is done on /usr/local/Cellar to ensure it only affects homebrew
+    # users, but the actual path we care about is the /usr/local/opt symlink
+    # that homebrew creates.
+    try$1dir="/usr/local/opt/$1"
+fi
+
 AC_ARG_WITH($1-dir,
   AS_HELP_STRING(--with-$1-dir=PATH, [specify path to $1 installation]),
   [
