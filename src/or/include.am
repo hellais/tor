@@ -133,7 +133,8 @@ src_or_libtor_testing_la_CFLAGS = $(AM_CFLAGS) $(TEST_CFLAGS)
 # This seems to matter nowhere but on windows, but I assure you that it
 # matters a lot there, and is quite hard to debug if you forget to do it.
 
-noinst_LTLIBRARIES += src/or/libtor_api.la
+#noinst_LTLIBRARIES += src/or/libtor_api.la
+lib_LTLIBRARIES += src/or/libtor_api.la
 src_or_libtor_api_la_SOURCES = # empty
 src_or_libtor_api_la_LDFLAGS = @TOR_LDFLAGS_zlib@ @TOR_LDFLAGS_openssl@ @TOR_LDFLAGS_libevent@
 src_or_libtor_api_la_LIBADD = src/or/libtor.la src/common/libor.la src/common/libor-ctime.la \
